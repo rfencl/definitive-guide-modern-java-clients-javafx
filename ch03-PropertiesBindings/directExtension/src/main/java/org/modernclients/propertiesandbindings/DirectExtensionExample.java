@@ -1,4 +1,5 @@
 package org.modernclients.propertiesandbindings;
+import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -12,17 +13,24 @@ public class DirectExtensionExample {
                 new SimpleDoubleProperty(null, "y", 3.0);
         System.out.println("Creating binding area" +
                 " with dependencies x and y.");
-        DoubleBinding area = new DoubleBinding() {
-            {
-                super.bind(x, y);
-            }
-            @Override
-            protected double computeValue() {
-                System.out.println("computeValue()" +
+        // This is the anonymous class version
+//        DoubleBinding area = new DoubleBinding() {
+//            {
+//                super.bind(x, y);
+//            }
+//            @Override
+//            protected double computeValue() {
+//                System.out.println("computeValue()" +
+//                        " is called.");
+//                return x.get() * y.get();
+//            }
+//        };
+        // Create a double binding with a Callable and the dependencies.
+        DoubleBinding area = Bindings.createDoubleBinding(() -> {
+            System.out.println("computeValue()" +
                         " is called.");
-                return x.get() * y.get();
-            }
-        };
+            return x.get() * y.get();
+        }, x, y);
         System.out.println("area.get() = " + area.get());
         // Show that compute value is called only once.
         System.out.println("area.get() = " + area.get());
