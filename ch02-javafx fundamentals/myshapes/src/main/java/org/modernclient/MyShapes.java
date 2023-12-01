@@ -17,10 +17,10 @@ public class MyShapes extends Application {
 
         // Create an Ellipse and set fill color
         Ellipse ellipse = new Ellipse(110, 70);
-        ellipse.setFill(Color.LIGHTBLUE);
+//        ellipse.setFill(Color.LIGHTBLUE);
 
         // Alternate color notations
-        //ellipse.setFill(Color.web("#ADD8E680"));
+        ellipse.setFill(Color.web("#ADD8E680"));
         //ellipse.setFill(Color.web("0xADD8E680"));
         //ellipse.setFill(Color.rgb(173, 216, 230, .5));
 
