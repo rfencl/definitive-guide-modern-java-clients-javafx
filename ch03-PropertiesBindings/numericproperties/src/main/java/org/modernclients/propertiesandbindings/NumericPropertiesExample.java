@@ -36,7 +36,8 @@ public class NumericPropertiesExample {
         System.out.println("l.get() = " + l.get());
         System.out.println("f.get() = " + f.get());
         System.out.println("d.get() = " + d.get());
-
+        printBindStatus(i, l, f, d);
+        // i is not bound as an lvalue therefore it can be re-assigned.
         System.out.println("Calling i.set(2048).");
         i.set(2048);
 
@@ -54,7 +55,7 @@ public class NumericPropertiesExample {
         l.bind(f);
         i.bind(l);
         System.out.println("Bound f to d, l to f, i to l.");
-
+        printBindStatus(i,l,f,d);
         System.out.println("Calling d.set(10000000000L).");
         d.set(10000000000L);
 
@@ -62,6 +63,13 @@ public class NumericPropertiesExample {
         System.out.println("f.get() = " + f.get());
         System.out.println("l.get() = " + l.get());
         System.out.println("i.get() = " + i.get());
+    }
+
+    private static void printBindStatus(IntegerProperty i, LongProperty l, FloatProperty f, DoubleProperty d) {
+        System.out.println("i.isBound() = " + i.isBound());
+        System.out.println("l.isBound() = " + l.isBound());
+        System.out.println("f.isBound() = " + f.isBound());
+        System.out.println("d.isBound() = " + d.isBound());
     }
 }
 
