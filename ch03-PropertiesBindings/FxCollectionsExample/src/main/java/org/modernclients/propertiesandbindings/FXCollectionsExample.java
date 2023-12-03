@@ -8,8 +8,10 @@ import javafx.collections.ObservableMap;
 import javafx.collections.ObservableSet;
 import javafx.collections.SetChangeListener;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * Here, we created an observable list, an observable map, an observable set, and an
@@ -73,13 +75,19 @@ public class FXCollectionsExample {
         FXCollections.sort(list);
 
         System.out.println("Calling sort(list, c)" + " with custom comparator: ");
-        FXCollections.sort(list, new Comparator<String>() {
-            @Override
-            public int compare(String lhs, String rhs) {
-// Reverse the order
-                return rhs.compareTo(lhs);
-            }
-        });
+        FXCollections.sort(list, Comparator.reverseOrder()); // static method
+        // lambda
+//        FXCollections.sort(list, (lhs, rhs) ->  {
+//            return rhs.compareTo(lhs);
+//        });
+        // anonymous function
+//        FXCollections.sort(list, new Comparator<String>() {
+//            @Override
+//            public int compare(String lhs, String rhs) {
+//// Reverse the order
+//                return rhs.compareTo(lhs);
+//            }
+//        });
 
         System.out.println("Calling fill(list," + " \"Ten\"): ");
         FXCollections.fill(list, "Ten");
