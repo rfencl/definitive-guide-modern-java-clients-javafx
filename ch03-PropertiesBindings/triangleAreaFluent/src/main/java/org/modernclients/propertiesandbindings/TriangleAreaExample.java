@@ -34,7 +34,7 @@ public class TriangleAreaExample {
 //        final NumberBinding determinant = Bindings.subtract(diff2, p3p2);
 //        final NumberBinding area = Bindings.divide(determinant, 2.0D);
 
-        // The fluent version 
+        // The fluent version
         final NumberBinding area = p1.x.multiply(p2.y)
                 .add(p2.x.multiply(p3.y))
                 .add(p3.x.multiply(p1.y))
